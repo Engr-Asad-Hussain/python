@@ -1,0 +1,7 @@
+FROM mysql:8.0.36
+
+# Set the working directory
+WORKDIR /docker-entrypoint-initdb.d
+
+# Copy the SQL dump file into the container during build
+COPY ./schema.sql ./

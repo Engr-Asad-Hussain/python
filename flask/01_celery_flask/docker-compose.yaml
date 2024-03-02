@@ -1,0 +1,69 @@
+version: '3.1'
+services:
+  # redis:
+  #   image: redis:7.0
+  #   container_name: sde-redis
+  #   networks:
+  #     - common_network
+  #   ports:
+  #     - 6379:6379
+
+  mysql:
+    image: mysql:sde
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql
+    container_name: sde-mysql
+    networks:
+      - common_network
+    environment:
+      - MYSQL_DATABASE=sde
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - 3306:3306
+
+  # flask:
+  #   image: flask:sde
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: sde-flask
+  #   depends_on:
+  #     - mysql
+  #     - celery
+  #   networks:
+  #     - common_network
+  #   environment:
+  #     - DATABASE=sde
+  #     - DB_USERNAME=root
+  #     - DB_PASSWORD=root
+  #     - DB_HOST=mysql
+  #     - DB_PORT=3306
+  #     - CELERY_BACKEND=redis://redis:6379
+  #     - CELERY_BROKER=redis://redis:6379
+  #   ports:
+  #     - 8080:8080
+
+  # celery:
+  #   image: flask:sde
+  #   container_name: sde-celery
+  #   depends_on:
+  #     - mysql
+  #   networks:
+  #     - common_network
+  #   command: celery -A run.celery worker --loglevel=info --pool=solo
+  #   environment:
+  #     - DATABASE=sde
+  #     - DB_USERNAME=root
+  #     - DB_PASSWORD=root
+  #     - DB_HOST=mysql
+  #     - DB_PORT=3306
+  #     - CELERY_BACKEND=redis://redis:6379
+  #     - CELERY_BROKER=redis://redis:6379
+
+networks:
+  common_network:
+    name: 'internal-network'
