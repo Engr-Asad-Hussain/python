@@ -3,30 +3,30 @@
 
 
 ## Content
-- [Install poetry](#install-poetry-on-your-computer)
-  - [Difference between pip and pipx](#difference-between-pip-and-pipx)
-  - [Recommended way to install poetry](#recommended-way-to-install-poetry)
-- [Start a project with poetry](#start-a-project-with-poetry)
-  - [Understand the pyproject.toml file](#understand-the-pyprojecttoml-file)
-  - [Poetry virtual environment](#poetry-virtual-environment)
-  - [Declare runtime dependencies](#declare-runtime-dependencies)
-  - [Remove runtime dependencies](#remove-runtime-dependencies)
-  - [Group dependencies](#group-dependencies)
-  - [Extra dependencies](#extra-dependencies)
-  - [Remove poetry virtual environment](#remove-poetry-virtual-environment)
-- [Install dependencies with poetry](#install-dependencies-with-poetry)
-- [Manage dependencies manually](#manage-dependencies-manually)
-  - [Lock dependencies](#lock-dependencies)
-  - [Purpose of poetry lock](#purpose-of-poetry-lock)
-- [Add poetry to an existing project](#add-poetry-to-an-existing-project)
-- [Install poetry with pip](#install-poetry-with-pip)
+- [Install poetry](#1-install-poetry-on-your-computer)
+  - [Difference between pip and pipx](#11-difference-between-pip-and-pipx)
+  - [Recommended way to install poetry](#12-recommended-way-to-install-poetry)
+- [Start a project with poetry](#2-start-a-project-with-poetry)
+  - [Understand the pyproject.toml file](#21-understand-the-pyprojecttoml-file)
+  - [Poetry virtual environment](#22-poetry-virtual-environment)
+  - [Declare runtime dependencies](#23-declare-runtime-dependencies)
+  - [Remove runtime dependencies](#24-remove-runtime-dependencies)
+  - [Group dependencies](#25-group-dependencies)
+  - [Extra dependencies](#26-extra-dependencies)
+  - [Remove poetry virtual environment](#27-remove-poetry-virtual-environment)
+- [Install dependencies with poetry](#3-install-dependencies-with-poetry)
+- [Manage dependencies manually](#4-manage-dependencies-manually)
+  - [Lock dependencies](#41-lock-dependencies)
+  - [Purpose of poetry lock](#42-purpose-of-poetry-lock)
+- [Add poetry to an existing project](#5-add-poetry-to-an-existing-project)
+- [Install poetry with pip](#6-install-poetry-with-pip)
 
 ## 1. Install poetry on your computer
 - Poetry should always be installed in a dedicated virtual environment to isolate it from the rest of your system. 
 - You also want to install Poetry system-wide to access it as a stand-alone application regardless of the specific virtual environment or Python version that you’re currently working in.
 
 
-##### 1.1. Difference between pip and pipx
+#### 1.1. Difference between pip and pipx
 - **pip**:
   - Pip is the default package manager for Python.
   - When you install a package using pip, it installs the package and its dependencies globally in the Python environment.
@@ -40,7 +40,7 @@
   - To install poetry using pipx: `pipx install poetry`
 
 
-##### 1.2. Recommended way to install poetry
+#### 1.2. Recommended way to install poetry
 - The recommended way to install Poetry is with the help of `pipx`, which takes care of creating and maintaining isolated virtual environments for command-line Python applications. To install pipx and poetry folow the official [docs](https://python-poetry.org/docs/).
 - Get all the dependencies in pipx virtual environment: `pipx list`.
 
@@ -67,7 +67,7 @@ rp-poetry/
 - Provide custom project name with `--name` flag example `poetry new rp-poetry --name real_poetry`
 
 
-#### 2.1. Understand the pyproject.toml file
+### 2.1. Understand the pyproject.toml file
 When you start a new poetry project it will create following `pyproject.toml` file.
 ```toml
 [tool.poetry]
@@ -93,7 +93,7 @@ build-backend = "poetry.core.masonry.api"
 In this case, the two subtables belong to only one external tool—Poetry. But you’ll often find examples like **[tool.black]**, **[tool.isort]**, **[tool.mypy]**, or **[tool.pytest.ini_options]** for their corresponding tools.
 
 
-#### 2.2. Poetry virtual environment
+### 2.2. Poetry virtual environment
 - When you create a new Python project by hand, it’s a good practice to also create an associated virtual environment (`virtualenv venv`). 
 - Poetry comes with built-in support for virtual environments.
 - However, Poetry doesn’t create a virtual environment right away when you start a new project. That’s by design to let you decide whether you want to manage your virtual environments yourself or let Poetry handle them for you automatically.
@@ -108,14 +108,14 @@ poetry env info --path
 > On the other hand, Poetry will automatically creates a virtual environment when you add or remove a dependency using poetry's command-line interface. Letting Poetry create virtual environments on its own is the preferred way of isolating dependencies in your projects. Poetry constructs a unique name for your virtual environment by adding `base64-encoded hash` value of you projects parent directory path. Poetry creates virtual environments in the `virtualenvs/` subfolder of its cache directory, which is specific to the operating system. To reveal your current Poetry configuration, which includes the cache-dir and virtualenvs.path settings, run this command: `poetry config --list`
 
 
-#### 2.3. Use poetry’s virtual environments
+### 2.3. Use poetry’s virtual environments
 You can list all virtual environments that Poetry manages. Whenever you install any package using poetry command-line, it will automatically create the virtual environment for that project.
 ```bash
 poetry env list
 ```
 
 
-#### 2.4. Declare runtime dependencies
+### 2.4. Declare runtime dependencies
 Running the poetry add command will automatically update your `pyproject.toml` file with the new dependency and install the package at the same time. In fact, you can even specify multiple packages in one go:
 ```bash
 poetry add requests==2.25.1 beautifulsoup4
@@ -140,7 +140,7 @@ build-backend = "poetry.core.masonry.api"
 > Note the caret symbol (^) before the version specifiers, which indicates that Poetry is free to install any version matching the leftmost non-zero digit of the version string. For example, if the Requests library releases a new version 2.99.99, then Poetry will consider it an acceptable candidate for your project. However, version 3.0 wouldn’t be allowed.
 
 
-#### 2.5. Remove runtime dependencies
+### 2.5. Remove runtime dependencies
 If you want to remove one or more dependencies from your project, then Poetry provides the related poetry remove command: 
 ```bash
 poetry remove requests
@@ -149,7 +149,7 @@ poetry remove requests
 > As you can see, it’ll remove the given dependency along with its transitive dependencies, so you don’t need to worry about leftover packages that are no longer needed by your project. This is an advantage of Poetry over plain `pip`, which can only uninstall the individual packages.
 
 
-#### 2.6. Group dependencies
+### 2.6. Group dependencies
 You can create group dependencies like `development`, `testint`, `staging` which is missing from pip.
 ```bash
 poetry add --group dev black flake8 isort mypy pylint
@@ -171,7 +171,7 @@ faker = "^22.6.0"
 ```
 
 
-#### 2.7. Extra dependencies
+### 2.7. Extra dependencies
 You can define optional dependencies and groups by setting the corresponding attribute in the `pyproject.toml` file. For example, this declaration will turn your test group into an optional one:
 ```toml
 [tool.poetry.group.test]
@@ -201,7 +201,7 @@ pgsql = ["psycopg2-binary"]
 ```
 
 
-#### 2.8. Remove poetry virtual environment
+### 2.8. Remove poetry virtual environment
 Get the list of all virtual environments:
 ```bash
 poetry env list
@@ -246,7 +246,7 @@ poetry install --extras databases
 Whenever you interact with Poetry through its command-line interface, it updates the `pyproject.toml` file and pins the resolved versions in the `poetry.lock` file. However, you don’t have to let Poetry do all the work. You can manually modify dependencies in the pyproject.toml file and lock them afterward.
 
 
-#### 4.1. Lock dependencies
+### 4.1. Lock dependencies
 The `poetry.lock` file is not meant to be changed by hand, you can edit the related `pyproject.toml` file at will.
 
 Suppose you wanted to bring back the Requests library that you removed from the `rp-poetry` project earlier in this tutorial. You can open the `pyproject.toml` file in your text editor and type the necessary declaration in the main group of dependencies:
@@ -256,7 +256,7 @@ requests = "*"
 ```
 By using the asterisk (*) as the version constraint, you indicate that you’re not specifying any particular version of the Requests library, and that any version will be acceptable. But this library isn’t installed yet.
 
-#### 4.2. Install manually added dependency
+### 4.2. Install manually added dependency
 If you now open your terminal and navigate to the project’s parent directory, then you can tell Poetry to install the manually added dependencies into the associated virtual environment and update the lock file:
 ```bash
 poetry install
@@ -276,7 +276,7 @@ poetry lock
 - Note: The poetry lock command also updates your existing dependencies if newer versions that still fit your version constraints are available. If you don’t want to update any dependencies that are already in the poetry.lock file, then add the `--no-update` option to the poetry lock command:
 
 
-#### 4.3. Purpose of poetry lock
+### 4.3. Purpose of poetry lock
 It’s important to note that dependency locking is only about two things:
 - **Resolving**: Finding packages that satisfy all version constraints
 - **Pinning**: Taking a snapshot of the resolved versions in the poetry.lock file
