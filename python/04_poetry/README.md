@@ -3,23 +3,23 @@
 
 
 ## Content
-- Install poetry
-  - Difference between pip and pipx
-  - Recommended way to install poetry
-- Start a project with poetry
-  - Understand the pyproject.toml file
-  - Poetry virtual environment
-  - Declare runtime dependencies
-  - Remove runtime dependencies
-  - Group dependencies
-  - Extra dependencies
-  - Remove poetry virtual environment
-- Install dependencies with poetry
-- Manage dependencies manually
-  - Lock dependencies
-  - Purpose of poetry lock
-- Add poetry to an existing project
-- Install poetry with pip
+- [Install poetry](#install-poetry-on-your-computer)
+  - [Difference between pip and pipx](#difference-between-pip-and-pipx)
+  - [Recommended way to install poetry](#recommended-way-to-install-poetry)
+- [Start a project with poetry](#start-a-project-with-poetry)
+  - [Understand the pyproject.toml file](#understand-the-pyprojecttoml-file)
+  - [Poetry virtual environment](#poetry-virtual-environment)
+  - [Declare runtime dependencies](#declare-runtime-dependencies)
+  - [Remove runtime dependencies](#remove-runtime-dependencies)
+  - [Group dependencies](#group-dependencies)
+  - [Extra dependencies](#extra-dependencies)
+  - [Remove poetry virtual environment](#remove-poetry-virtual-environment)
+- [Install dependencies with poetry](#install-dependencies-with-poetry)
+- [Manage dependencies manually](#manage-dependencies-manually)
+  - [Lock dependencies](#lock-dependencies)
+  - [Purpose of poetry lock](#purpose-of-poetry-lock)
+- [Add poetry to an existing project](#add-poetry-to-an-existing-project)
+- [Install poetry with pip](#install-poetry-with-pip)
 
 ## Install poetry on your computer
 - Poetry should always be installed in a dedicated virtual environment to isolate it from the rest of your system. 
@@ -157,7 +157,7 @@ poetry add --group test pytest faker
 ```
 
 Resulting in `[tool.poetry.group.dev.dependencies]` and `[tool.poetry.group.test.dependencies]` groups:
-```
+```toml
 ...
 
 [tool.poetry.group.dev.dependencies]
@@ -177,21 +177,16 @@ faker = "^22.6.0"
 
 ### Extra dependencies
 You can define optional dependencies and groups by setting the corresponding attribute in the `pyproject.toml` file. For example, this declaration will turn your test group into an optional one:
-```
-...
-
+```toml
 [tool.poetry.group.test]
 optional = true
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.0.0"
 faker = "^22.6.0"
-
-...
 ```
-> Poetry won’t install dependencies belonging to such a group unless you explicitly instruct it to by using the `--with` option.
 
-In addition to this, you can add the individual packages as optional to let the user choose whether to install them:
+> Poetry won’t install dependencies belonging to such a group unless you explicitly instruct it to by using the `--with` option. In addition to this, you can add the individual packages as optional to let the user choose whether to install them:
 ```bash
 poetry add --optional mysqlclient psycopg2-binary
 ```
@@ -207,8 +202,6 @@ However, this isn’t enough to expose such optional dependencies to the user. Y
 databases = ["mysqlclient", "psycopg2-binary"]
 mysql = ["mysqlclient"]
 pgsql = ["psycopg2-binary"]
-
-...
 ```
 
 
@@ -249,7 +242,7 @@ In contrast, Poetry won’t automatically install extra sets of dependencies and
 ```
 ```bash
 poetry install --extras databases
-# Result in ["mysqlclient", "psycopg2-binary"]
+# Result in installation of ["mysqlclient", "psycopg2-binary"]
 ```
 
 
@@ -261,7 +254,7 @@ Whenever you interact with Poetry through its command-line interface, it updates
 The `poetry.lock` file is not meant to be changed by hand, you can edit the related `pyproject.toml` file at will.
 
 Suppose you wanted to bring back the Requests library that you removed from the `rp-poetry` project earlier in this tutorial. You can open the `pyproject.toml` file in your text editor and type the necessary declaration in the main group of dependencies:
-```bash
+```toml
 [tool.poetry.dependencies]
 requests = "*"
 ```
