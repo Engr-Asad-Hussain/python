@@ -15,6 +15,7 @@
   - [Extra dependencies](#26-extra-dependencies)
   - [Remove poetry virtual environment](#27-remove-poetry-virtual-environment)
   - [Poetry configurations](#29-poetry-configurations)
+  - [Activate virtuale environment](#210-activate-virtuale-environment)
 - [Install dependencies with poetry](#3-install-dependencies-with-poetry)
 - [Manage dependencies manually](#4-manage-dependencies-manually)
   - [Lock dependencies](#41-lock-dependencies)
@@ -227,6 +228,14 @@ The best practice is to create the virtualenv inside the project’s root direct
 ```bash
 poetry config virtualenvs.in-project true
 ```
+
+
+### 2.10. Activate virtuale environment
+You can activate the poetry virtual environment using following command:
+```bash
+poetry shell
+```
+You can deactivate this environment via `deactivate` command.
 
 
 ## 3. Install dependencies with poetry
