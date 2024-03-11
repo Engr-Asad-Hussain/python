@@ -14,6 +14,7 @@
   - [Group dependencies](#25-group-dependencies)
   - [Extra dependencies](#26-extra-dependencies)
   - [Remove poetry virtual environment](#27-remove-poetry-virtual-environment)
+  - [Poetry configurations](#29-poetry-configurations)
 - [Install dependencies with poetry](#3-install-dependencies-with-poetry)
 - [Manage dependencies manually](#4-manage-dependencies-manually)
   - [Lock dependencies](#41-lock-dependencies)
@@ -213,6 +214,18 @@ poetry env info --path
 Remove the poetry virtual environment:
 ```bash
 poetry env remove rp-poetry-CEUO-QFO-py3.11
+```
+
+
+### 2.9. Poetry configurations
+You can check the default configurations of poetry using following command:
+```bash
+poetry config --list
+```
+
+The best practice is to create the virtualenv inside the project’s root directory. By default poetry will create virtual environment at `{cache-dir}/virtualenv`. To configure project based virtual environments change the default configurations using:
+```bash
+poetry config virtualenvs.in-project true
 ```
 
 
