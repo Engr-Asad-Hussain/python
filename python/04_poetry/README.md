@@ -16,6 +16,7 @@
   - [Remove poetry virtual environment](#27-remove-poetry-virtual-environment)
   - [Poetry configurations](#29-poetry-configurations)
   - [Activate virtuale environment](#210-activate-virtuale-environment)
+  - [Run packages from virtual evironment](#211-run-packages-from-virtual-evironment)
 - [Install dependencies with poetry](#3-install-dependencies-with-poetry)
 - [Manage dependencies manually](#4-manage-dependencies-manually)
   - [Lock dependencies](#41-lock-dependencies)
@@ -234,6 +235,14 @@ poetry config virtualenvs.in-project true
 You can activate the poetry virtual environment using following command:
 ```bash
 poetry shell
+```
+You can deactivate this environment via `deactivate` command.
+
+
+### 2.11. Run packages from virtual evironment
+The run command executes the given command inside the project's virtualenv. It can also execute one of the scripts defined in pyproject.toml.
+```bash
+poetry run python --version
 ```
 You can deactivate this environment via `deactivate` command.
 
