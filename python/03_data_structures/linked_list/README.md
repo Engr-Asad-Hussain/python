@@ -11,6 +11,19 @@ Before going more in depth on what linked lists are and how you can use them, yo
 > A ```linked list``` is a collection of nodes. The first node is called the ```head```, and it’s used as the starting point for any iteration through the list. The last node must have its ```next``` reference pointing to ```None``` to determine the end of the list.
 Here’s how it looks:
 
+> [!NOTE]
+> A linked list is a linear collection of data elements. Each element points to the next, defining their ordering in the sequence. They can be used for many things like implementing stacks and queues, performing arithmetic operations on long integers, etc.
+```sh
+1 -> 5 -> 2 -> None
+```
+We have three elements in the linked list above. Each element is called a node. Each node has two properties: a value and a reference to the next node in the sequence. By “reference” I mean the arrow pointing to the next value.
+- Notice how the third node references `None`. This is how we know we’ve found the end of the linked list because we eventually come to a point where there are no more nodes!
+- The first node of the linked list is called the head. We always start with the head when building our linked lists. In the example above, our head is a node with value 1 and pointing to a node with value 5.
+
+### Examples of Linked List
+https://www.geeksforgeeks.org/applications-of-linked-list-data-structure/
+
+
 ### Introducing collections.deque
 In Python, there’s a specific object in the collections module that you can use for linked lists called deque (pronounced “deck”), which stands for double-ended queue.
 ```collections.deque``` uses an implementation of a linked list in which you can access, insert, or remove elements from the beginning or end of a list with constant ***O(1) performance***.
@@ -128,3 +141,4 @@ deque(['https://realpython.com/'])
 
 - Reference(s):
   - https://realpython.com/linked-lists-python/
+  - https://medium.com/swlh/introduction-to-linked-lists-353c78e5f556

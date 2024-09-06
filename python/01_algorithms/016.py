@@ -1,91 +1,72 @@
-# 69. Sqrt(x)
-# https://leetcode.com/problems/sqrtx/
+# 67. Add Binary
+# https://leetcode.com/problems/add-binary/
 # Easy
 
 
 class Solution:
-    def floor_sqrt(self, x: int) -> int:
-        if x in (0, 1):
-            return x
+    def add_binary(self, a: str, b: str) -> str:
+        a_len, b_len, carry, total = len(a), len(b), 0, ""
+        # range(start, stop, step)
+        for i in range(-1, -max(a_len, b_len) - 1, -1):
+            try:
+                a_val = int(a[i])
+            except IndexError:
+                a_val = 0
 
-        i = 1
-        result = 1
-        while result <= x:
-            i += 1
-            result = i * i
+            try:
+                b_val = int(b[i])
+            except IndexError:
+                b_val = 0
 
-        return i - 1
+            cal = a_val + b_val + carry
+            carry = 0
+            if cal in (0, 1):
+                total = str(cal) + total
+            elif cal == 2:
+                carry = 1
+                total = "0" + total
+            elif cal == 3:
+                carry = 1
+                total = "1" + total
 
-    def binary_search(self, x: int) -> int:
-        left = 0
-        right = x
-        while left <= right:
-            mid = (left + right) // 2
-            square = mid * mid
-            if square > x:
-                right = mid - 1
-            elif square < x:
-                left = mid + 1
-            else:
-                return mid
-        return right
+        return str(carry) + total if carry else total
+
+    def another_sol(self, a: str, b: str) -> str:
+        s: list[str] = []
+        carry: int = 0
+        i = len(a) - 1
+        j = len(b) - 1
+
+        while i >= 0 or j >= 0 or carry:
+            if i >= 0:
+                carry += int(a[i])
+                i -= 1
+            if j >= 0:
+                carry += int(b[j])
+                j -= 1
+            s.append(str(carry % 2))
+            carry //= 2
+
+        return "".join(reversed(s))
 
 
-x = 4
-# Output = 2
+a = "11"
+b = "1"
+# Output: "100"
 
-x = 8
-# Output = 2 (2.82; round it down to nearest integer)
+# a = "1010"
+# b = "1011"
+# Output: "10101"
 
+# b = "111"
+# a = "11"
+# Output: "1010"
+
+# b = "0"
+# a = "0"
+# Output: "0"
+
+print(f"{a=} | {b=}")
 sol = Solution()
-# print(sol.floor_sqrt(x))
-print(sol.binary_search(x))
-
-
-# You can always run a sequential search—scanning the array from the beginning to the end—on
-# the array. But if the array is sorted, running the binary search algorithm is
-# much more efficient.
-
-
-def linear_search(nums: list[int], target: int) -> bool:
-    """
-    Performs on unsorted iteratables.\n
-    Args:
-        - `nums` (list[int]): The list of integers.
-        - `target` int: the target value to be search.
-    """
-
-    for val in nums:
-        if val == target:
-            return True
-    return False
-
-
-def binary_search(nums: list[int], target: int) -> tuple[int, int] | bool:
-    """
-    Performs on sorted iteratables.\n
-    Args:
-        - `nums` (list[int]): The list of integers.
-        - `target` int: the target value to be search.
-    """
-
-    left_pointer = 0
-    right_pointer = len(nums) - 1
-    while left_pointer <= right_pointer:
-        mid_pointer = (left_pointer + right_pointer) // 2
-        mid = nums[mid_pointer]
-        if mid > target:
-            right_pointer = mid_pointer - 1
-        elif mid < target:
-            left_pointer = mid_pointer + 1
-        else:
-            return mid_pointer, mid
-
-    return False
-
-
-# nums = [1, 20, 89, 42, 29, 11, 5]
-# print(linear_search(nums, 421))
-
-# nums = [2, 5, 7, 11, 14, 21, 27, 30, 36]
-# print(binary_search(nums, -271))
+# print(sol.add_binary(a, b))
+print(sol.another_sol(a, b))
