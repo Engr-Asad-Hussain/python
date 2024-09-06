@@ -14,6 +14,9 @@
   - [Group dependencies](#25-group-dependencies)
   - [Extra dependencies](#26-extra-dependencies)
   - [Remove poetry virtual environment](#27-remove-poetry-virtual-environment)
+  - [Poetry configurations](#29-poetry-configurations)
+  - [Activate virtuale environment](#210-activate-virtuale-environment)
+  - [Run packages from virtual evironment](#211-run-packages-from-virtual-evironment)
 - [Install dependencies with poetry](#3-install-dependencies-with-poetry)
 - [Manage dependencies manually](#4-manage-dependencies-manually)
   - [Lock dependencies](#41-lock-dependencies)
@@ -214,6 +217,34 @@ Remove the poetry virtual environment:
 ```bash
 poetry env remove rp-poetry-CEUO-QFO-py3.11
 ```
+
+
+### 2.9. Poetry configurations
+You can check the default configurations of poetry using following command:
+```bash
+poetry config --list
+```
+
+The best practice is to create the virtualenv inside the project’s root directory. By default poetry will create virtual environment at `{cache-dir}/virtualenv`. To configure project based virtual environments change the default configurations using:
+```bash
+poetry config virtualenvs.in-project true
+```
+
+
+### 2.10. Activate virtuale environment
+You can activate the poetry virtual environment using following command:
+```bash
+poetry shell
+```
+You can deactivate this environment via `deactivate` command.
+
+
+### 2.11. Run packages from virtual evironment
+The run command executes the given command inside the project's virtualenv. It can also execute one of the scripts defined in pyproject.toml.
+```bash
+poetry run python --version
+```
+You can deactivate this environment via `deactivate` command.
 
 
 ## 3. Install dependencies with poetry
