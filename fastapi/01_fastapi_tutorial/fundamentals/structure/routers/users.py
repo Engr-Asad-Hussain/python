@@ -2,7 +2,7 @@
 The same with app/routers/users.py, it's another submodule: app.routers.users
 Notes:
 - Let's say the file dedicated to handling just users is the submodule at /app/routers/users.py.
-- You want to have the path operations related to your users separated from the rest of the code, 
+- You want to have the path operations related to your users separated from the rest of the code,
   to keep it organized.
 - But it's still part of the same FastAPI application/web API (it's part of the same "Python Package").
 - You can create the path operations for that module using APIRouter

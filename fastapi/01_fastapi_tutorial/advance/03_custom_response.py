@@ -1,7 +1,8 @@
 import os
-from fastapi import FastAPI
+
 from fastapi.responses import ORJSONResponse
 
+from fastapi import FastAPI
 
 # Performance:
 # - `ORJSONResponse`: Significantly faster (often 6-10x) in JSON serialization compared to `JSONResponse`.

@@ -3,7 +3,8 @@ There's also an app/dependencies.py file, just like app/main.py, it is a "module
 """
 
 from typing import Annotated
-from fastapi import HTTPException, Header
+
+from fastapi import Header, HTTPException
 
 
 async def get_token_header(x_token: Annotated[str, Header()]):

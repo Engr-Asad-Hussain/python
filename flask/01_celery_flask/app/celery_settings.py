@@ -1,6 +1,8 @@
-from celery import Celery, Task
-from flask import Flask
 from typing import Any
+
+from celery import Celery, Task
+
+from flask import Flask
 
 
 def celery_init(app: Flask) -> Celery:

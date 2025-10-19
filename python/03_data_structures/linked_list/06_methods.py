@@ -3,6 +3,7 @@ class Node:
         self.value = value
         self.next = next
 
+
 class LinkedList:
     def __init__(self, head: Node | None = None) -> None:
         self.head = head
@@ -14,13 +15,13 @@ class LinkedList:
         self.head = new_node
         # 3. make sure new head.next references the old head
         new_node.next = old_head
-    
+
     def insert_at_end(self, new_node: Node) -> None:
         # assuming no elements in the Linked List
         if self.head is None:
             self.head = new_node
             return
-        
+
         # assuming some elements are present in the Linked List
         node = self.head
         while True:
@@ -28,11 +29,11 @@ class LinkedList:
                 node.next = new_node
                 return
             node = node.next
-    
+
     def remove_at_begining(self) -> None:
         if self.head is None:
-            raise IndexError('Linked List is empty')
-        
+            raise IndexError("Linked List is empty")
+
         # 1. keep the track of old head
         old_head = self.head
         # 2. adjust the head to point to the next of head
@@ -40,17 +41,16 @@ class LinkedList:
 
     def remove_at_end(self) -> None:
         if self.head is None:
-            raise IndexError('Linked List is empty')
-        
+            raise IndexError("Linked List is empty")
+
         # 1. assign previous node as current head node
         previous_node = self.head
         # 2. run the loop till node.next.next node points to None
         while previous_node.next.next is not None:
             previous_node = previous_node.next
-        
+
         # 3. modify node.next as None; hence we removed .next which is the last node
         previous_node.next = None
-
 
     def traverse(self):
         current_node = self.head
@@ -62,6 +62,7 @@ class LinkedList:
             current_node = next_node
 
         self.head = previous_node
+
 
 # 1. initiate empty linked list
 llist = LinkedList()

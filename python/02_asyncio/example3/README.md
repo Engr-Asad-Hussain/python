@@ -2,7 +2,8 @@
 ### Parallelism: 
 This involves executing multiple operations simultaneously. It refers to the ability to perform several tasks at the same time, improving efficiency and reducing the overall time taken to complete those tasks.
 
-### Multiprocessing: This is a technique used to achieve parallelism by distributing tasks across a computer's central processing units (CPUs) or cores. Instead of relying on a single CPU to handle all operations, multiprocessing utilizes multiple CPUs or cores to work on different tasks simultaneously.
+### Multiprocessing: 
+This is a technique used to achieve parallelism by distributing tasks across a computer's central processing units (CPUs) or cores. Instead of relying on a single CPU to handle all operations, multiprocessing utilizes multiple CPUs or cores to work on different tasks simultaneously.
 
 The paragraph emphasizes that multiprocessing is a method to achieve parallelism. It's particularly effective for tasks that heavily utilize the CPU, such as tasks involving intense calculations or tightly bound loops (loops that repeat a set of instructions for a specific number of iterations). These tasks can be split and distributed among multiple CPUs or cores, resulting in faster execution and better performance compared to executing them sequentially or on a single CPU/core.
 

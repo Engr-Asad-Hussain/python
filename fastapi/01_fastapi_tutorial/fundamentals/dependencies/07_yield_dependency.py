@@ -1,7 +1,7 @@
 import os
 from typing import Annotated
-from fastapi import FastAPI, Depends, HTTPException
 
+from fastapi import Depends, FastAPI, HTTPException
 
 # FastAPI supports dependencies that do some extra steps after finishing.
 # Exit code, cleanup code, teardown code, closing code or context manager.

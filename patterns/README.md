@@ -10,19 +10,49 @@ Design patterns are used to represent the pattern used by developers to create s
 
 
 ## Singleton Pattern
-- This pattern restricts the instantiation of a class to one object. It is a type of creational pattern and involves only one class to create methods and specified objects.
-- It provides a global point of access to the instance created.
-- The number of instances created are same and there is no difference in the objects listed in output.
+- Singleton is a `creational design` pattern that lets you ensure that a class has only `one` instance, while providing a global access point to this instance.
+- The Singleton pattern solves two problems at the same time, violating the Single Responsibility Principle:
+    - **Ensure that a class has just a single instance**. Why would anyone want to control how many instances a class has? The most common reason for this is to control access to some shared resource—for example, a database or a file.
+    - **Provide a global access point to that instance**. Remember those global variables that you (all right, me) used to store some essential objects? While they’re very handy, they’re also very unsafe since any code can potentially overwrite the contents of those variables and crash the app.
+- Use cases:
+    - **Database connection manager**: Create one connection pool, and share it across your app.
+        - Connection pooling is expensive.
+        - You want only one pool for your entire app.
+        - It improves performance and avoids crashing your DB.
+    - **Configuration manager**: App-wide settings like API keys, env vars, flags — they should be loaded once and accessible everywhere. Avoid reloading configs or reading from file over and over.
+- `None` is one of the example of Singleton.
 - Reference(s):
-  - https://www.tutorialspoint.com/python_design_patterns/python_design_patterns_quick_guide.htm
+    - https://www.tutorialspoint.com/python_design_patterns/python_design_patterns_quick_guide.htm
+    - https://refactoring.guru/design-patterns/singleton
 
 
 ## Factory Pattern
+- Factory Method is a `creational` design pattern used to create `concrete implementations` of a common `interface`.
+    - An `interface` in programming is basically a contract — it defines what `methods` or `behaviors` a class should have, but not how they should be `implemented`.
+    - A `concrete` implementation is a real working class that implements all methods of the interface.
+```py
+from abc import ABC
+
+class CommonInterface(ABC):
+    @abstractmethod
+    def dispatch(self): ...
+
+class ConcreteClass1(CommonInterface):
+    def dispatch(self):
+        print('Some Implementation')
+
+class ConcreteClass2(CommonInterface):
+    def dispatch(self):
+        print('Some Implementation')
+```
 - The factory pattern comes under the creational patterns list category. It provides one of the best ways to create an object. In factory pattern, objects are created without exposing the logic to client and referring to the newly created object using a common interface.
-- Factory patterns are implemented in Python using factory method. When a user calls a method such that we pass in a string and the return value as a new object is implemented through factory method. The type of object used in factory method is determined by string which is passed through method.
 - Reference(s):
   - https://www.tutorialspoint.com/python_design_patterns/python_design_patterns_quick_guide.htm
+  - https://realpython.com/factory-method-python/
 
+
+## Registry Pattern
+The Registry Pattern in Python is a design pattern that provides a centralized mechanism for managing and accessing objects or classes within an application. It acts as a central repository where items (classes, functions, or instances) are registered with a unique key, allowing for their dynamic retrieval and use throughout the codebase.
 
 ## Builder
 - Builder Pattern is a unique design pattern which helps in building complex object using simple objects and uses an algorithmic approach. This design pattern comes under the category of creational pattern. In this design pattern, a builder class builds the final object in step-by-step procedure. This builder is independent of other objects.

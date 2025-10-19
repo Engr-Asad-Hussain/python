@@ -1,6 +1,9 @@
 from typing import Any
-from flask import Blueprint, current_app as app
+
 from app import db
+
+from flask import Blueprint
+from flask import current_app as app
 
 bp = Blueprint("predict", __name__)
 

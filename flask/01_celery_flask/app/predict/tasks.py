@@ -1,9 +1,7 @@
-from celery import shared_task
-from celery.utils.log import get_task_logger
-
 from app.predict import models
 from app.utils import training
-
+from celery import shared_task
+from celery.utils.log import get_task_logger
 
 logger = get_task_logger(__name__)
 

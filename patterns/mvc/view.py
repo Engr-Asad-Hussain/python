@@ -1,4 +1,4 @@
-""" View """
+"""View"""
 
 
 def show_all_view(users: list[dict[str, str]]):

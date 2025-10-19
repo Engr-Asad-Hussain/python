@@ -8,18 +8,35 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Reviews',
+            name="Reviews",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('comment', models.CharField(max_length=255)),
-                ('author', models.CharField(max_length=150, verbose_name='Person who create a comment.')),
-                ('up_votes', models.PositiveIntegerField(default=0, verbose_name='Number of up-votes for a comment.')),
-                ('created_at', models.DateTimeField(default=django.utils.timezone.now)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("comment", models.CharField(max_length=255)),
+                (
+                    "author",
+                    models.CharField(
+                        max_length=150, verbose_name="Person who create a comment."
+                    ),
+                ),
+                (
+                    "up_votes",
+                    models.PositiveIntegerField(
+                        default=0, verbose_name="Number of up-votes for a comment."
+                    ),
+                ),
+                ("created_at", models.DateTimeField(default=django.utils.timezone.now)),
             ],
         ),
     ]

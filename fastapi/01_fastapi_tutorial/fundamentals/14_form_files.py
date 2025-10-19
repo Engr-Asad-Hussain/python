@@ -1,5 +1,6 @@
-from fastapi import FastAPI, status, Form, Header, File, UploadFile
 from typing import Annotated, Any
+
+from fastapi import FastAPI, File, Form, Header, UploadFile, status
 
 app = FastAPI()
 

@@ -9,8 +9,9 @@ Notes:
 - So, instead of adding all that to each path operation, we can add it to the APIRouter.
 """
 
-from fastapi import APIRouter, Depends, HTTPException
 from structure.dependencies import get_token_header
+
+from fastapi import APIRouter, Depends, HTTPException
 
 router = APIRouter(
     prefix="/items",

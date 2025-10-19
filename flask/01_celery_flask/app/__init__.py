@@ -1,10 +1,10 @@
 from datetime import datetime
-from flask import Flask
 
-from app.utils.responses import response
-from app.database import Database
 from app.celery_settings import celery_init
+from app.database import Database
+from app.utils.responses import response
 
+from flask import Flask
 
 db = Database()
 

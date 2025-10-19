@@ -1,9 +1,10 @@
 import os
 from typing import Annotated
-from fastapi import Depends, FastAPI
+
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel, EmailStr
 
+from fastapi import Depends, FastAPI
 
 app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")

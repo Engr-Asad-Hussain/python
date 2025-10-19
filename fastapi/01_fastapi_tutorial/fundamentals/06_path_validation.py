@@ -1,5 +1,6 @@
-from fastapi import FastAPI, Path
 from typing import Annotated
+
+from fastapi import FastAPI, Path
 
 app = FastAPI()
 
@@ -8,7 +9,7 @@ app = FastAPI()
 # This way you can add numeric validation on path-parameters
 @app.get(path="/api/category/{cloth_id}")
 async def specific_category(
-    cloth_id: Annotated[int, Path(title="Cloth Reference", ge=1)]
+    cloth_id: Annotated[int, Path(title="Cloth Reference", ge=1)],
 ):
     return {"message": "Following is the provided path parameter", "clothId": cloth_id}
 

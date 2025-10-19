@@ -1,7 +1,9 @@
 import os
 from typing import Annotated, Any
-from fastapi import Cookie, FastAPI, Depends, HTTPException, Header
+
 from pydantic import BaseModel, Field
+
+from fastapi import Cookie, Depends, FastAPI, Header, HTTPException
 
 app = FastAPI()
 

@@ -1,9 +1,10 @@
 import os
 from typing import Annotated, Any
-from fastapi import Depends, FastAPI, HTTPException
-from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
+
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel, EmailStr
 
+from fastapi import Depends, FastAPI, HTTPException
 
 app = FastAPI()
 

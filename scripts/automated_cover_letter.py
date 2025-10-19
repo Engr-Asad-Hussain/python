@@ -1,17 +1,18 @@
 from docx import Document
 from docx2pdf import convert
 
+
 def main():
-    source_docx = r'C:/Users/Asad-Hussain/Documents/Resume/Cover Letter/Cover Letter - Template.docx'
-    destination_docx = r'C:/Users/Asad-Hussain/Documents/Resume/template.docx'
-    destination_pdf = r'C:/Users/Asad-Hussain/Documents/Cover Letter - Asad Hussain.pdf'
+    source_docx = r"C:/Users/Asad-Hussain/Documents/Resume/Cover Letter/Cover Letter - Template.docx"
+    destination_docx = r"C:/Users/Asad-Hussain/Documents/Resume/template.docx"
+    destination_pdf = r"C:/Users/Asad-Hussain/Documents/Cover Letter - Asad Hussain.pdf"
 
     company = "Axx"
     replacements = {
         "<Today_Date>": "February 15, 2024",
         "<Company_Title>": company,
         "<Company_Location>": "Karachi, Pakistan",
-        "<Company>": company
+        "<Company>": company,
     }
 
     doc = Document(source_docx)
@@ -28,6 +29,7 @@ def main():
 
     # Create a PDF with the modified content
     convert(destination_docx, destination_pdf)
-    
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     main()

@@ -1,10 +1,27 @@
+## Cache using @lru_cache
+This section contains how to use `@lru_cache`
+
+
+## Content
+- [Implementing a cache using a Python Dictionary](#implementing-a-cache-using-a-python-dictionary)
+- [Caching strategies](#caching-strategies)
+- [Diving into the Least Recently Used (LRU) cache strategy](#diving-into-the-least-recently-used-lru-cache-strategy)
+- [Using @lru_cache to implement an LRU cache](#using-lru_cache-to-implement-an-lru-cache-in-python)
+- [Example of @lru_cache](#minimal-example-of-lru_cache)
+- [Unpacking the functionality of @lru_cache](#unpacking-the-functionality-of-lru_cache)
+- [Evicting cache entries based on both time and space](#evicting-cache-entries-based-on-both-time-and-space)
+- [Caculating memory size of @lru_cache](#caculating-the-memory-size-of-lru_cache)
+- [Reference](#reference)
+
 ## Implementing a Cache Using a Python Dictionary
 You can implement a caching solution in Python using a dictionary.
 ```py
 import code
 import requests
 
+
 cache = dict()
+
 
 def get_article_from_server(url: str) -> str:
     print('Fetching article')
@@ -25,6 +42,7 @@ get_article('https://realpython.com/sorting-algorithms-python/')
 ```
 Notice how you get the string "Fetching article from server..." printed a single time despite calling `get_article()` twice. This happens because, after accessing the article for the first time, you put its URL and content in the cache dictionary. The second time, the code doesn’t need to fetch the item from the server again.
 
+
 ## Caching Strategies
 There’s one big problem with this cache implementation using dictionary: the content of the dictionary will grow indefinitely! As the user downloads more articles, the application will keep storing them in memory, eventually causing the application to crash.
 
@@ -41,11 +59,14 @@ There are several different strategies that you can use to evict items from the 
 
 In the sections below, you’ll take a closer look at the LRU strategy and how to implement it using the `@lru_cache` decorator from Python’s functools module.
 
+
 ## Diving Into the Least Recently Used (LRU) Cache Strategy
-A cache implemented using the LRU strategy organizes its items in order of use. Every time you access an entry, the LRU algorithm will move it to the top of the cache. This way, the algorithm can quickly identify the entry that’s gone unused the longest by looking at the bottom of the list.
+A cache implemented using the `LRU` strategy organizes its items in order of use. Every time you access an entry, the LRU algorithm will move it to the top of the cache. This way, the algorithm can quickly identify the entry that’s gone unused the longest by looking at the bottom of the list.
+
 
 ## Using @lru_cache to Implement an LRU Cache in Python
 Just like the caching solution you implemented earlier, `@lru_cache` uses a dictionary behind the scenes. It caches the function’s result under a key that consists of the call to the function, including the supplied arguments. This is important because it means that these arguments have to be hashable for the decorator to work.
+
 
 ## Minimal example of @lru_cache
 ```py
@@ -62,6 +83,7 @@ def get_article_from_server(url: str) -> str:
 get_article_from_server('https://realpython.com/sorting-algorithms-python/')
 get_article_from_server('https://realpython.com/sorting-algorithms-python/')
 ```
+
 
 ## Unpacking the Functionality of @lru_cache
 With the `@lru_cache` decorator in place, you store every call and answer in memory to access later if requested again. But how many calls can you save before running out of memory?
@@ -138,6 +160,7 @@ get_article_from_server('https://realpython.com/sorting-algorithms-python/')
 get_article_from_server('https://realpython.com/sorting-algorithms-python/')
 get_article_from_server('https://realpython.com/sorting-algorithms-python/')
 ```
+
 
 ## Caculating the memory size of @lru_cache
 ```py

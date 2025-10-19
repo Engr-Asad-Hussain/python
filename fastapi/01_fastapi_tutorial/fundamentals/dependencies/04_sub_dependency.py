@@ -1,6 +1,7 @@
 import os
 from typing import Annotated
-from fastapi import Cookie, FastAPI, Depends
+
+from fastapi import Cookie, Depends, FastAPI
 
 app = FastAPI()
 
@@ -25,7 +26,7 @@ async def query_or_cookie_extractor(
 
 @app.get(path="/api/items")
 async def read_query(
-    query_or_default: Annotated[str, Depends(query_or_cookie_extractor)]
+    query_or_default: Annotated[str, Depends(query_or_cookie_extractor)],
 ):
     return {
         "message": "Following are the provided query arguments.",

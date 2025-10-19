@@ -1,4 +1,5 @@
-""" How to convert blocking code into non-blocking asynchronous concurrent"""
+"""How to convert blocking code into non-blocking asynchronous concurrent"""
+
 import asyncio
 import time
 

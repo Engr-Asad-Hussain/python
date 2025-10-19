@@ -1,5 +1,5 @@
 from timeit import default_timer
-from typing import Any
+from typing import Any, List
 
 nums: list[int] = [4, 4, 4, 5, 5, 9, 7]
 target: int = 10
@@ -44,5 +44,17 @@ def main():
     print("Runtime is %s " % (end_timer - start_timer))
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
+
+
+def remove_dupicate(numbers: List[int]) -> List[int]:
+    unique_numbers = []
+    for num in numbers:
+        if num not in unique_numbers:
+            unique_numbers.append(num)
+
+    return unique_numbers
+
+
+print(remove_dupicate([1, 2, 2, 3, 1, 4, 3]))

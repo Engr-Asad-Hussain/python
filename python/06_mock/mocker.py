@@ -1,12 +1,11 @@
-import unittest
-from unittest.mock import Mock, patch
 import datetime
+import unittest
 from typing import Any
+from unittest.mock import Mock, patch
+
+from calander import get_holidays as calander_get_holidays
+from calander import is_weekday as calander_is_weekday
 from requests.exceptions import Timeout
-from calander import (
-    is_weekday as calander_is_weekday,
-    get_holidays as calander_get_holidays,
-)
 
 mock = Mock()
 # <Mock id='4394778696'>

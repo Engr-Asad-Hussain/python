@@ -1,6 +1,8 @@
-from fastapi import FastAPI, Query, Path, Body
-from pydantic import BaseModel, Field, HttpUrl
 from typing import Annotated
+
+from pydantic import BaseModel, Field, HttpUrl
+
+from fastapi import Body, FastAPI, Path, Query
 
 app = FastAPI()
 
@@ -130,7 +132,7 @@ async def create_store(
                 },
             },
         ),
-    ]
+    ],
 ):
     return {"message": "Following are the stores.", "store": store}
 

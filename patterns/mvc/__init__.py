@@ -1,4 +1,5 @@
-""" Controller """
+"""Controller"""
+
 import view
 from model import PersonDatabase
 

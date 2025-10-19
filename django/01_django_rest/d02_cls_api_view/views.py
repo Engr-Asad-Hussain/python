@@ -6,8 +6,8 @@ from rest_framework import views
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from .serializers import SellerSerializer
 from .models import Seller
+from .serializers import SellerSerializer
 
 
 class Sellers(views.APIView):

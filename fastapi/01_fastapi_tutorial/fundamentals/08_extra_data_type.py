@@ -1,5 +1,6 @@
-from fastapi import FastAPI
 from uuid import UUID
+
+from fastapi import FastAPI
 
 app = FastAPI()
 

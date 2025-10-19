@@ -3,6 +3,7 @@
 """
 
 from rest_framework import viewsets
+
 from .models import Categories
 from .serializers import CategoriesSerializer
 

@@ -1,9 +1,10 @@
-from fastapi import FastAPI
+from fastapi.exception_handlers import http_exception_handler
 from fastapi.exceptions import HTTPException, RequestValidationError
 from fastapi.requests import Request
 from fastapi.responses import JSONResponse, PlainTextResponse
 from starlette.exceptions import HTTPException as StarletteHttpException
-from fastapi.exception_handlers import http_exception_handler
+
+from fastapi import FastAPI
 
 app = FastAPI()
 

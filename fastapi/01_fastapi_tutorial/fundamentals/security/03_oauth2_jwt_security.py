@@ -1,11 +1,13 @@
 import os
 from datetime import datetime, timedelta, timezone
 from typing import Annotated, Any, Callable
-from fastapi import Depends, FastAPI, HTTPException
-from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
-from pydantic import BaseModel, EmailStr
+
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+from pydantic import BaseModel, EmailStr
+
+from fastapi import Depends, FastAPI, HTTPException
 
 # To get randomly generated password run:
 # openssl rand -hex 32

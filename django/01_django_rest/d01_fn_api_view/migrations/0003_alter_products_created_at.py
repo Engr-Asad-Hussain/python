@@ -7,13 +7,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('d01_fn_api_view', '0002_remove_products_category_products_created_at_and_more'),
+        (
+            "d01_fn_api_view",
+            "0002_remove_products_category_products_created_at_and_more",
+        ),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='products',
-            name='created_at',
+            model_name="products",
+            name="created_at",
             field=models.DateTimeField(default=django.utils.timezone.now),
         ),
     ]

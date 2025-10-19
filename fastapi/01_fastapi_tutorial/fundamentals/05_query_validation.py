@@ -1,5 +1,6 @@
-from fastapi import FastAPI, Query
 from typing import Annotated, Any
+
+from fastapi import FastAPI, Query
 
 app = FastAPI()
 

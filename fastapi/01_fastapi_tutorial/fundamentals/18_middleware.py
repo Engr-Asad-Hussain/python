@@ -1,8 +1,9 @@
 import time
 from typing import Any, Callable
-from fastapi import FastAPI
+
 from fastapi.requests import Request
 
+from fastapi import FastAPI
 
 app = FastAPI()
 

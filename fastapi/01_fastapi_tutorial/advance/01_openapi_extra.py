@@ -1,9 +1,10 @@
 import os
-from pydantic import BaseModel, ValidationError
-import yaml
-from fastapi import FastAPI, HTTPException
-from fastapi.requests import Request
 
+import yaml
+from fastapi.requests import Request
+from pydantic import BaseModel, ValidationError
+
+from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
 

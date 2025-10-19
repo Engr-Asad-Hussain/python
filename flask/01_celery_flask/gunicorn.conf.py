@@ -1,6 +1,5 @@
 from config import Config
 
-
 # Define the bind address and port for the server
 bind = f"{Config.APP_HOST}:{Config.APP_PORT}"
 

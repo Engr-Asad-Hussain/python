@@ -1,8 +1,9 @@
 import os
 from typing import Annotated
-from fastapi import FastAPI, Depends, HTTPException, Header
+
 from pydantic import BaseModel, Field
 
+from fastapi import Depends, FastAPI, Header, HTTPException
 
 # For some types of applications you might want to add dependencies to the whole application.
 

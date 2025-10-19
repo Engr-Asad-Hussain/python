@@ -1,4 +1,5 @@
-""" Introduction to Python class methods """
+"""Introduction to Python class methods"""
+
 
 class Person:
     def __init__(self, first_name, last_name, age):
@@ -7,10 +8,11 @@ class Person:
         self.age = age
 
     def get_full_name(self):
-        return f'{self.first_name} {self.last_name}'
+        return f"{self.first_name} {self.last_name}"
 
     def introduce(self):
-        return f'Hey, I am {self.get_full_name()} and I am {self.age} years old!'
+        return f"Hey, I am {self.get_full_name()} and I am {self.age} years old!"
+
 
 # Suppose that you want to add a method that creates an anonymous person to the Person class.
 class Person:
@@ -20,17 +22,19 @@ class Person:
         self.age = age
 
     def get_full_name(self):
-        return f'{self.first_name} {self.last_name}'
+        return f"{self.first_name} {self.last_name}"
 
     def introduce(self):
-        return f'Hey, I am {self.get_full_name()} and I am {self.age} years old!'
-    
-    def anonymous(self):
-        return Person('Asad', 'Hussain', 20)
+        return f"Hey, I am {self.get_full_name()} and I am {self.age} years old!"
 
-# However, to invoke the create_anonymous() method, you need to create an instance, 
+    def anonymous(self):
+        return Person("Asad", "Hussain", 20)
+
+
+# However, to invoke the create_anonymous() method, you need to create an instance,
 # which doesn’t make sense in this case.
 # This is why Python class methods come into play.
+
 
 class Person:
     def __init__(self, first_name, last_name, age):
@@ -39,14 +43,15 @@ class Person:
         self.age = age
 
     def get_full_name(self):
-        return f'{self.first_name} {self.last_name}'
+        return f"{self.first_name} {self.last_name}"
 
     def introduce(self):
-        return f'Hey, I am {self.get_full_name()} and I am {self.age} years old!'
-    
+        return f"Hey, I am {self.get_full_name()} and I am {self.age} years old!"
+
     @classmethod
     def anonymous(cls):
-        return Person('Asad', 'Hussain', 20)
+        return Person("Asad", "Hussain", 20)
+
 
 # The anonymous() method cannot access instance attributes. But it can access class attributes via the cls variable.
 

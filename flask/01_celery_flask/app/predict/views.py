@@ -1,11 +1,11 @@
-from flask import request
-
 from app.exceptions import BadRequest
 from app.predict import bp, models
-from app.utils import training, schema
-from app.utils.training import TrainingStatus
+from app.utils import schema, training
 from app.utils.parser import parse_header
-from app.utils.responses import response, raise_exc
+from app.utils.responses import raise_exc, response
+from app.utils.training import TrainingStatus
+
+from flask import request
 
 
 @bp.route("/predict", methods=["POST"])

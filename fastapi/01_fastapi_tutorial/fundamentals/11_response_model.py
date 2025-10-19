@@ -1,8 +1,10 @@
-from fastapi import FastAPI, Path
-from fastapi.responses import RedirectResponse, JSONResponse
-from typing import Annotated, Any
-from pydantic import EmailStr, BaseModel, Field
 from datetime import datetime
+from typing import Annotated, Any
+
+from fastapi.responses import JSONResponse, RedirectResponse
+from pydantic import BaseModel, EmailStr, Field
+
+from fastapi import FastAPI, Path
 
 app = FastAPI()
 

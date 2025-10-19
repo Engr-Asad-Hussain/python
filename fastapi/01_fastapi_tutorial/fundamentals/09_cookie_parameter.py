@@ -1,6 +1,6 @@
-from fastapi import FastAPI, Cookie
 from typing import Annotated
 
+from fastapi import Cookie, FastAPI
 
 app = FastAPI()
 

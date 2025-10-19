@@ -6,38 +6,46 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('d01_fn_api_view', '0003_alter_products_created_at'),
+        ("d01_fn_api_view", "0003_alter_products_created_at"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='products',
-            name='price',
+            model_name="products",
+            name="price",
             field=models.PositiveIntegerField(default=None),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='products',
-            name='seller',
-            field=models.CharField(default=None, max_length=150, verbose_name='Seller name of a product'),
+            model_name="products",
+            name="seller",
+            field=models.CharField(
+                default=None, max_length=150, verbose_name="Seller name of a product"
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='products',
-            name='seller_city',
-            field=models.CharField(default=1, max_length=50, verbose_name='City of a seller'),
+            model_name="products",
+            name="seller_city",
+            field=models.CharField(
+                default=1, max_length=50, verbose_name="City of a seller"
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='products',
-            name='seller_contact',
-            field=models.CharField(default=None, max_length=15, verbose_name='Contact number of a seller'),
+            model_name="products",
+            name="seller_contact",
+            field=models.CharField(
+                default=None, max_length=15, verbose_name="Contact number of a seller"
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='products',
-            name='seller_country',
-            field=models.CharField(default=None, max_length=50, verbose_name='Country of a seller'),
+            model_name="products",
+            name="seller_country",
+            field=models.CharField(
+                default=None, max_length=50, verbose_name="Country of a seller"
+            ),
             preserve_default=False,
         ),
     ]

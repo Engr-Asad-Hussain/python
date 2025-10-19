@@ -1,10 +1,11 @@
 import os
 from typing import Annotated
-from fastapi import Depends, FastAPI, HTTPException
-from sqlalchemy.orm import Session
 
 from sql import curd, models, schemas
 from sql.database import SessionLocal, engine
+from sqlalchemy.orm import Session
+
+from fastapi import Depends, FastAPI, HTTPException
 
 # In a very simplistic way create the database tables:
 # Normally you would probably initialize your database (create tables, etc) with Alembic.

@@ -6,13 +6,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('d04_api_viewsets', '0001_initial'),
+        ("d04_api_viewsets", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='categories',
-            old_name='create_at',
-            new_name='created_at',
+            model_name="categories",
+            old_name="create_at",
+            new_name="created_at",
         ),
     ]

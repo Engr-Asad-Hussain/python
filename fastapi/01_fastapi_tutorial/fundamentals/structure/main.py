@@ -1,15 +1,16 @@
 """
-It contains an app/main.py file. 
-As it is inside a Python package (a directory with a file __init__.py), it is a "module" of 
+It contains an app/main.py file.
+As it is inside a Python package (a directory with a file __init__.py), it is a "module" of
 that package: app.main
 Notes:
 - And we can even declare global dependencies that will be combined with the dependencies for each APIRouter:
 """
 
-from fastapi import Depends, FastAPI
-from structure.routers import items, users
-from structure.internal import admin
 from structure.dependencies import get_query_token, get_token_header
+from structure.internal import admin
+from structure.routers import items, users
+
+from fastapi import Depends, FastAPI
 
 app = FastAPI(dependencies=[Depends(get_query_token)])
 app.include_router(users.router)

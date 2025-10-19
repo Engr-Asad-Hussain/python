@@ -1,10 +1,11 @@
-import mysql.connector
-from mysql.connector.pooling import PooledMySQLConnection
-from mysql.connector.abstracts import MySQLConnectionAbstract, MySQLCursorAbstract
-from flask import Flask
 from typing import Any, Callable
 
+import mysql.connector
 from app.exceptions import DoesNotExists
+from mysql.connector.abstracts import MySQLConnectionAbstract, MySQLCursorAbstract
+from mysql.connector.pooling import PooledMySQLConnection
+
+from flask import Flask
 
 
 class Database:

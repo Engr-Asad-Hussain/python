@@ -1,8 +1,8 @@
 from typing import Any
 
 from app import db
-from app.predict import tasks
 from app.exceptions import DoesNotExists
+from app.predict import tasks
 from app.utils.training import TrainingStatus
 
 
